@@ -1,25 +1,20 @@
 // Task 1
 let myName = "Ilya";
 // Task 2
-let myBirthYear = 2002;
-// For tasks 4-5
-let arraysLength = 10;
+const myBirthYear = 2002;
 
 // Task 3
-function sayHello(name) {
-    alert('Hello, ' + myName + '!');
-}
-
-// For tasks 4-5
-function randomIntFromInterval(min, max) { // min and max included
-    return Math.floor(Math.random() * (max - min + 1) + min)
+function sayHello(name = null) {
+    let trueName = name == null ? myName : name;
+    alert('Hello, ' + trueName + '!');
 }
 
 // Task 4
 function range(start, end) {
     let result = [];
-    for (let i = 0; i < arraysLength; i++)
-        result[i] = randomIntFromInterval(start, end);
+    let index = 0;
+    for (let i = start; i <= end; i++, index++)
+        result[index] = i;
     return result;
 }
 
@@ -28,7 +23,10 @@ function rangeOdd(start, end) {
     let result = range(start, end);
     for (let i = 0; i < result.length; i++) {
         if (result[i] % 2 === 0)
-            result[i] += result[i] > 0 ? -1 : 1;
+        {
+            result.splice(i, 1);
+            i--;
+        }
     }
     return result;
 }
@@ -56,17 +54,25 @@ function calculate(numbers = 9) {
     return result;
 }
 
+// Document writer
+function writeP(str) {
+    document.writeln('<p>' + str + '</p>');
+}
+
 function main() {
+    writeP('Task 1: ' + myName);
+    writeP('Task 2: ' + myBirthYear);
+
     let arr = range(15, 30);
-    console.log('Task 4: ' + arr);
+    writeP('Task 4: ' + arr);
 
     arr = rangeOdd(15, 30)
-    console.log('Task 5: ' + arr);
+    writeP('Task 5: ' + arr);
 
-    console.log('Task 6 (numbers 2, 3): ' + average(2, 3));
-    console.log('Task 7 (number 5): ' + square(5));
-    console.log('Task 8 (number 4): ' + cube(4));
-    console.log('Task 9: ' + calculate());
+    writeP('Task 6 (numbers 2, 3): ' + average(2, 3));
+    writeP('Task 7 (number 5): ' + square(5));
+    writeP('Task 8 (number 4): ' + cube(4));
+    writeP('Task 9: ' + calculate());
 }
 
 
