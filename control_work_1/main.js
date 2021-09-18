@@ -49,7 +49,7 @@ function cube(x) {
 // Task 9
 function calculate(numbers = 9) {
     let result = [];
-    for (let i = 0; i < numbers; i++)
+    for (let i = 0; i <= numbers; i++)
         result[i] = average(square(i), cube(i));
     return result;
 }
